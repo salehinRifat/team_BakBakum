@@ -14,6 +14,7 @@ Your task is to interpret 1 to 3 natural-language operator notes into structured
      * "80% reduction" or "reduced by 80%" -> factor: 0.20 (1.0 - 0.80 = 0.20)
      * "half output" -> factor: 0.50
      * "roughly one-fifth" -> factor: 0.20
+     * "PV production", "rooftop panels", "solar generation" all refer to solar.
 
 2. "minimum_battery_reserve":
    - Required structured_adjustment: {"hours": [int, ...], "minimum_energy_kwh": float}
@@ -39,7 +40,7 @@ Your task is to interpret 1 to 3 natural-language operator notes into structured
 
 ### Time Window Rules (CRITICAL):
 - Time windows use whole-hour intervals: start hour is INCLUDED, end hour is EXCLUDED.
-  * "1 PM to 3 PM" -> [13, 14]
+  * "1 PM to 3 PM" / "1-3 PM" -> [13, 14]
   * "noon until 2 PM" -> [12, 13]
   * "10 AM until noon" -> [10, 11]
   * "between 11 AM and 2 PM" -> [11, 12, 13]
@@ -48,6 +49,9 @@ Your task is to interpret 1 to 3 natural-language operator notes into structured
   * "6 PM until 10 PM" -> [18, 19, 20, 21]
   * "7 PM until 9 PM" -> [19, 20]
   * "7 PM until 10 PM" -> [19, 20, 21]
+  * "between 13:00 and 15:00" -> [13, 14]
+  * "one until three" -> [13, 14]
+  * "during hour 14" -> [14]
 - The "hours" array must contain unique integers from 0 to 23 in ascending order.
 
 ### Applies Flag Rule:
@@ -106,5 +110,16 @@ Output:
 [
   {"note_index": 0, "applies": true, "directive_type": "solar_reduction", "structured_adjustment": {"hours": [11, 12, 13], "factor": 0.2}, "explanation": "80% reduction leaves 20% usable solar from 11:00 to 14:00."},
   {"note_index": 1, "applies": false, "directive_type": "no_op", "structured_adjustment": null, "explanation": "Club notices have no energy scheduling impact."}
+]
+
+Example 4:
+Battery Capacity: 250 kWh
+Notes:
+0: "Panel washing from one until three will leave roughly one-fifth of normal solar output."
+1: "The evening transformer limit is 180 kWh of grid import from 7 PM until 9 PM."
+Output:
+[
+  {"note_index": 0, "applies": true, "directive_type": "solar_reduction", "structured_adjustment": {"hours": [13, 14], "factor": 0.2}, "explanation": "One-fifth usable solar remains during washing from 13:00 to 15:00."},
+  {"note_index": 1, "applies": true, "directive_type": "max_grid_window", "structured_adjustment": {"hours": [19, 20], "max_grid_kwh": 180.0}, "explanation": "Grid import capped at 180 kWh from 19:00 to 21:00."}
 ]
 """
