@@ -411,3 +411,16 @@ docker exec -it gridwise-instance pytest tests/ -v
 * **No Committed Secrets**: `.env`, `*.key`, `*.pem`, and `*.token` files are excluded from Git via `.gitignore`.
 * **Zero Baked-in Credentials**: The Docker image contains no hardcoded API keys. Keys must be supplied at runtime via environment variables (`GEMINI_API_KEY` or `OPENAI_API_KEY`).
 * **Safe Error Handling**: Server errors return controlled HTTP 400 or HTTP 500 messages without exposing raw prompts, keys, or stack traces.
+
+---
+
+## 16. 3-Minute Architecture & Solution Video (Tie-Break Submission)
+
+* **Video Access Link**: `[Insert Unlisted YouTube / Google Drive Video Link Here]`
+* **Duration**: $\le$ 3 minutes (180 seconds)
+* **Video Content Outline**:
+  1. **[0:00 - 0:30] Problem Understanding**: Smart campus energy optimization balancing solar self-consumption, battery storage, and dynamic grid tariffs, augmented with unstructured natural-language operator notes.
+  2. **[0:30 - 1:15] Architecture Pipeline**: Unstructured notes $\to$ Google Gemini (`gemini-flash-lite-latest`) $\to$ Section 08 Deterministic Guardrails $\to$ High-speed LP formulation ($120$ continuous variables) $\to$ Replay audit engine.
+  3. **[1:15 - 2:00] Guardrails & Robustness**: How strict schema checking prevents hallucinated bounds, validates 0–23 sorted hours, enforces `applies = false` for non-scheduling distractors, and falls back to deterministic regex extraction if the LLM is unavailable or throttled.
+  4. **[2:00 - 2:30] Optimization Quality**: Formulation of linear cost objective solved via SciPy HiGHS in $<10\text{ ms}$, ensuring exact end-of-day battery neutrality ($E_{23} = E_{\text{initial}}$) and zero constraint violations.
+  5. **[2:30 - 3:00] Run & Reproduction Demo**: Live demo of `GET /health` (`{"status":"ok"}`), executing `pytest tests/ -v` (13 passed in 0.9s), and container fallback execution.
