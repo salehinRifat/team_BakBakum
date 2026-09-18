@@ -1,6 +1,18 @@
 # GridWise — Smart Campus Energy Optimization Service
 **BUP CSE Fest 2026 Hackathon · Online Preliminary Round**
 
+## Team Name: Bakbakum
+
+### Team Members
+
+| # | Name | Institution | Email |
+|---|---|---|---|
+| 1 | Abu Salehin Rifat | Jahangirnagar University | salehinrifat2@gmail.com |
+| 2 | S. M. Abdullah | Jahangirnagar University | sheikhmuhammad2002@gmail.com |
+| 3 | Md Habib Hossain Noor | Jahangirnagar University | mdhabibhossainnoor@gmail.com |
+| 4 | Sanjida Akter Rimi | Kurigram Polytechnic Institute | sanjidarimi023@gmail.com |
+
+
 GridWise is an autonomous microgrid scheduling service designed for the Bangladesh University of Professionals (BUP) smart campus. It combines a **Large Language Model (LLM)** for natural language operator note interpretation, **deterministic guardrails** for validation, and a **high-performance Linear Programming (LP) solver** to generate cost-optimal 24-hour schedules for campus grid electricity import, rooftop solar utilization, and battery energy storage.
 
 ---
