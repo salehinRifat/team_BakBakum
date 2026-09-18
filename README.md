@@ -393,7 +393,7 @@ docker run -d \
   -e GEMINI_API_KEY="your_api_key_here" \
   -e LLM_PROVIDER="gemini" \
   --name gridwise-instance \
-  docker.io/<your-username>/gridwise:latest
+   docker.io/smabdullah2002/gridwise:v1.0.0
 ```
 *(If running offline or without an API key, omit the `GEMINI_API_KEY` variable; the container will automatically operate in deterministic fallback mode).*
 
