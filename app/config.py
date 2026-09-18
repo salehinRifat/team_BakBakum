@@ -28,7 +28,7 @@ class Settings:
     MODEL_NAME: str = os.getenv("MODEL_NAME", "")
     if not MODEL_NAME:
         if LLM_PROVIDER == "gemini":
-            MODEL_NAME = "gemini-1.5-flash"
+            MODEL_NAME = "gemini-flash-lite-latest"
         elif LLM_PROVIDER in ("openai", "groq"):
             MODEL_NAME = "gpt-4o-mini"
         else:

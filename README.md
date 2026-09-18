@@ -40,7 +40,7 @@ The service implements a strict 4-stage pipeline that ensures safety, determinis
 * **API Service (`app/main.py`)**: Built with FastAPI and Uvicorn for asynchronous, high-throughput, low-latency API serving ($p95 \le 60\text{ms}$).
 * **Schemas (`app/schemas.py`)**: Strict Pydantic v2 schemas validating request structures, hour ordering, and response integrity.
 * **LLM Interpreter (`app/interpreter/`)**:
-  * Multi-provider client supporting **Google Gemini** (`gemini-1.5-flash` / `gemini-2.0-flash`) and **OpenAI/Groq** (`gpt-4o-mini` / `llama-3.3-70b`).
+  * Multi-provider client supporting **Google Gemini** (`gemini-flash-lite-latest` / `gemini-2.0-flash`) and **OpenAI/Groq** (`gpt-4o-mini` / `llama-3.3-70b`).
   * Structured prompt templates with canonical few-shot examples and time window parsing.
   * Deterministic rule-based fallback parser ensuring zero downtime, safe error handling, and 100% test pass rates under provider network issues or offline evaluation.
 * **Deterministic Guardrails (`app/guardrails/validator.py`)**: Enforces Section 08 rules:
@@ -224,7 +224,7 @@ docker run -d \
 | `GEMINI_API_KEY` | *(None)* | Google Gemini API Key |
 | `OPENAI_API_KEY` | *(None)* | OpenAI / Groq API Key |
 | `OPENAI_BASE_URL` | *(None)* | Optional custom base URL (e.g. `https://api.groq.com/openai/v1`) |
-| `MODEL_NAME` | `gemini-1.5-flash` | Language model identifier |
+| `MODEL_NAME` | `gemini-flash-lite-latest` | Language model identifier |
 | `HOST` | `0.0.0.0` | Service bind address |
 | `PORT` | `8000` | Service port |
 | `TIMEOUT_SECONDS` | `25.0` | Per-request timeout safeguard |
