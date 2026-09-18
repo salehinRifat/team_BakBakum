@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  gridwise-api:
+    build: .
+    image: gridwise-service:latest
+    container_name: gridwise-app
+    ports:
+      - "8000:8000"
+    environment:
+      - LLM_PROVIDER=${LLM_PROVIDER:-fallback}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - MODEL_NAME=${MODEL_NAME:-}
+    restart: unless-stopped
