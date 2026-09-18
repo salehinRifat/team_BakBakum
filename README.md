@@ -376,14 +376,14 @@ tests/test_sample_cases.py::test_public_sample_case[SAMPLE-10] PASSED    [100%]
 
 A tested Docker container image is provided as an independent fallback execution path.
 
-* **Registry Reference**: `docker.io/<your-username>/gridwise:latest` (or `ghcr.io/<your-org>/gridwise:latest`)
+* **Registry Reference**:  `docker.io/smabdullah2002/gridwise:v1.0.0`
 * **Service Port**: Exposes port `8000`
 * **Bind Address**: Binds to `0.0.0.0`
 * **No Baked-in Secrets**: The image contains zero credentials.
 
 ### Step 1: Pull Image
 ```bash
-docker pull docker.io/<your-username>/gridwise:latest
+docker pull smabdullah2002/gridwise:v1.0.0
 ```
 
 ### Step 2: Run Container
@@ -428,7 +428,7 @@ docker exec -it gridwise-instance pytest tests/ -v
 
 ## 16. 3-Minute Architecture & Solution Video (Tie-Break Submission)
 
-* **Video Access Link**: `[Insert Unlisted YouTube / Google Drive Video Link Here]`
+* **Video Access Link**: `https://youtube.com/shorts/g_-FLfXupCY?feature=share`
 * **Duration**: $\le$ 3 minutes (180 seconds)
 * **Video Content Outline**:
   1. **[0:00 - 0:30] Problem Understanding**: Smart campus energy optimization balancing solar self-consumption, battery storage, and dynamic grid tariffs, augmented with unstructured natural-language operator notes.
