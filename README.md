@@ -174,8 +174,8 @@ To reproduce and run the service from a clean environment without assistance:
 
 ```bash
 # 1. Clone repository
-git clone <YOUR_REPOSITORY_URL>
-cd BUP_CSE_FEST_2026_Participant_Docs
+(https://github.com/salehinRifat/team_BakBakum.git)
+cd team_BakBakum
 
 # 2. Create virtual environment
 python3 -m venv .venv
